@@ -42,17 +42,17 @@
 #Ejercio 5 y 6:
 
 # Ejercicio 6: numeros triangulares: 1-1,2-3,3-6...
-def sumahastan(n):
-    suma = 0
-    for i in range(n):
-        suma += i
-    return suma
-def numerosTriangulares(n):
-    for i in range(1,n+1):
-        aux = sumahastan(i)
-        nro2 = i + aux
-        print(i,"-",nro2)    
-numerosTriangulares(5)
+# def sumahastan(n):
+#     suma = 0
+#     for i in range(n):
+#         suma += i
+#     return suma
+# def numerosTriangulares(n):
+#     for i in range(1,n+1):
+#         aux = sumahastan(i)
+#         nro2 = i + aux
+#         print(i,"-",nro2)    
+# numerosTriangulares(5)
 
 
 #Bucles while
@@ -61,22 +61,36 @@ numerosTriangulares(5)
 #Si el usuario ingresa cualquier cosa que no sea lo pedido se le debe informar de su error mediante
 #un mensaje y volver a pedirle el número,repitiendo este proceso hasta que ingrese lo pedido.
 
-# def ingreseNumeroPositvo():
-#     valor = False
-#     while not valor:
-#         ingreso = int(input("Ingrese un numero Positivo: "))
-#         if ingreso > 0:
-#             valor = True
-#         else:
-#             print("ingrese un numero positivo por favor")
-#             ingreso = int(input("Ingrese un numero Positivo: ")) 
+# def numposiitvo(n):
+#     valor = int(n)
+#     if n > 0:
+#         return True
+#     return False
 
-# ingreseNumeroPositvo()
-# Funciona medio raro
+# def ingresopositivo():
+#     ingreso = int(input("Pos"))
+#     while not numposiitvo(ingreso):
+#         print("Ingreso Invalido")
+#         ingreso = ingreso = int(input("Pos"))
+# ingresopositivo()
+        
 
 # Ejercicio8. Usuario ingresa notas y le vas preguntando si desea
 # poner mas notas. Al finalizar impprime el promedio de las notas
 
+
+# def promedionotas2():
+#     sumadenotas = 0
+#     cantdenotas = 0
+#     deseo = str((input("desea ingresar una nota?:")))
+#     deseo.lower()
+#     while deseo == "si":
+#         nota = int(input("nota: "))
+#         sumadenotas += nota
+#         cantdenotas += 1
+#         deseo = str((input("desea ingresar una nota?:")))
+#     return sumadenotas / cantdenotas
+# print(promedionotas2())
 # def promedioNotas ():
 #     sumaDeNotas = 0
 #     cantidadDeNotas = 0
@@ -93,9 +107,13 @@ numerosTriangulares(5)
 # promedioNotas()
 
 # Ejercicio 9:
-
-
-
+# def pidenumeros():
+#     nro1 = int(input("nro1: "))
+#     nro2 = int(input("nro2: "))
+#     while not nro2 > nro1:
+#         nro2 = int(input("nro2: "))
+#     print(nro1,nro2)
+# pidenumeros()
 #Ejercicio 10: recibe como parametro 2 numeros y devuelve cuantos multiplos
 # del primero son menores que el 2do
 # def multiplos(x: int, y:int):
@@ -183,7 +201,7 @@ numerosTriangulares(5)
 #             return False
 #         x /= 2
 #     return True
-
+# print(es_potencia_de_dos(1))
 # def suma_de_potencias_de_dos (a:int,b:int):
 #     suma = 0
 #     for i in range(a,b+1):
@@ -207,7 +225,7 @@ from random import *
 # def lanzo_n_veces_dos_dados():
 #     n = int(input("Ingrese la cantidad de veces que se lanzaran los dados: "))
 #     coincidencias = 0
-#     for i in range (n+1):
+#     for i in range (n):
 #         dado1 = randint(1,6)
 #         dado2 = randint(1,6)
 #         if dado1 == dado2:
@@ -219,7 +237,9 @@ from random import *
 #     veces = int(input("Ingrese la cantidad de veces que se lanzaran los dados: "))
 #     pesos = 0
 #     dolares = 0
-#     for i in range(veces + 1):
+#     aux = 0
+#     for i in range(veces):
+#         aux +=1
 #         dado = randint(1,6)
 #         if dado == 6:
 #             pesos += 4
@@ -227,13 +247,60 @@ from random import *
 #             dolares += 1
 #         elif dado == 2 or dado == 4 or dado == 5:
 #             pesos -= 2
-#     print("El resultado final del juego fue:",pesos,"pesos y" ,dolares ,"dolares")
+#     print("El resultado final del juego fue:",pesos,"pesos y" ,dolares ,"dolares",". Se jugaron",aux,"veces")
 
 # juego_de_dados()
 
 
+def es_mayor(lista):
+    if lista == []:
+        return "lista vacia"
+    mayor =  lista [0]
+    for i in lista[1:]:
+        if i > mayor:
+            mayor = i
+    return mayor
+print(es_mayor([1,4,5,2]))
 
 
+# def distintos (lista):
+#     listadedistintos = []
+#     for i in range(len(lista)):
+#         for j in range(len(lista)):
+#             if lista[i] != lista[j]:
+#                 listadedistintos.append(lista[i])
+#     return listadedistintos
+# print(distintos([1,2,3,4]))
+
+def segundo_mayor(lista:list):
+    if lista == []:
+        return "asf"
+    lista.remove(es_mayor(lista))
+    return es_mayor(lista)
+print(segundo_mayor([1,2,3,4]))
+
+def n_mayor(lista:list,n):
+    if lista == []:
+        return "sfa"
+    for i in range(n - 1):
+        lista.remove(es_mayor(lista))
+    return es_mayor(lista)
+print(n_mayor([1,2,3,4],3))
+
+def mayorN (lista:list,n):
+    veces = 0
+    mayor = 0
+    if lista == []:
+        return mayor 
+    if veces < n:
+        lista.remove(es_mayor(lista))
+        veces += 1
+        return mayorN(lista,n)
+    if veces == n:
+        mayor = es_mayor(lista)
+    return mayor
+            
+print(mayorN([1,2,3,4],2))
 
 
 

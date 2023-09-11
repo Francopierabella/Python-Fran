@@ -1,6 +1,6 @@
-import pytest 
-import Juego
+from Juego import Turno
+import pytest
 def test_Turno():
-    assert Juego.Turno(2) == 'R'
-    assert Juego.Turno(1) == 'N'
+    assert Turno(2) == 'R'
+    assert Turno(1) == 'N'
 

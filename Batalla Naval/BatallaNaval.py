@@ -22,8 +22,8 @@ def TableroJugador1():
 def TableroJugador2 ():
     return [['-','-','-','-','-','-','-'],
             ['-','-','-','-','-','-','-'],
-            ['-','-','-','1','-','-','-'],
-            ['-','-','-','1','-','-','-'],
+            ['-','-','-','-','-','-','-'],
+            ['-','-','-','-','-','-','-'],
             ['-','-','-','-','-','-','-'],
             ['-','-','-','-','-','-','-'],
             ['-','-','-','-','-','-','-'],
@@ -135,8 +135,8 @@ def valida(posicion:tuple,listadeposiciones):
     if posicion in tuplasSiguientes(listadeposiciones):
         return True
     return False            
-def colocarBarco(turno,tableroActualizadoJugador1,tableroActualizadoJugador2):
-    cantidadDebarcos = 1
+def colocarBarco(turno,tableroActualizadoJugador1:list,tableroActualizadoJugador2):
+    cantidadDebarcos = 4
     if Turno(turno) == 'Jugador 1':
         print("Hora de colocar tus barcos Jugador 1!")
         print("Situalos estrategicamente asi tendras mas chances de ganar!")
@@ -180,12 +180,19 @@ def colocarBarco(turno,tableroActualizadoJugador1,tableroActualizadoJugador2):
                         print("Error, Perdiste el turno")  
         return tableroActualizadoJugador2
 
+def filaPosible(fila):
+    return True if fila >= 0 and fila <= 7 else False
+def columnaPosible(columna):
+    return True if columna >= 0 and columna <= 6 else False
 def piezaAlrededor(tablero,fila,columna):
-    if tablero[fila + 1][columna] == '1' or tablero[fila - 1][columna] == '1'\
-        or tablero[fila][columna + 1] == '1' or tablero[fila][columna - 1] == '1':
-            return True
-    return False
-    
+    if filaPosible(fila) and columnaPosible(columna):
+        if tablero[fila + 1][columna] == '1' or \
+            tablero[fila - 1][columna] == '1' or \
+             tablero[fila][columna + 1] == '1' or \
+              tablero [fila][columna - 1] == '1':
+                  return True
+        return False
+        
 print(piezaAlrededor(TableroJugador2(),3,3))
 def HundirBarcosDelJugador1(tablero,fila,columna):
     if tablero[fila][columna] != '-':
@@ -218,6 +225,8 @@ def juego():
     tableroActualizadoJ1 = TableroJugador1()
     tableroActualizadoJ2 = TableroJugador2()
     terminaJuego = False
+    listaDeJugadasj1 = []
+    listaDeJugadasj2 = []
     colocarBarco(turno,tableroActualizadoJ1,tableroActualizadoJ2)
     turno += 1
     colocarBarco(turno,tableroActualizadoJ1,tableroActualizadoJ2)
@@ -229,6 +238,9 @@ def juego():
             print("Jugador 1! Es tu turno de jugar!")
             fila = int(input("En que fila piensas que Jugador 2 coloco sus barcos? : "))
             columna = int(input("En que columna piensas que Jugador 2 coloco sus barcos? : "))
+            if (fila,columna) not in listaDeJugadasj1:
+                listaDeJugadasj1.append((fila,columna))
+                print(print(Turno(turno),"Has hecho estas jugadas",listaDeJugadasj1))
             HundirBarcosDelJugador2(tableroActualizadoJ2,fila,columna)
             if ganador(tableroActualizadoJ2):
                 terminaJuego  = True
@@ -238,8 +250,11 @@ def juego():
             print("Jugador 2! Es tu turno de jugar!")
             fila = int(input("En que fila piensas que Jugador 1 coloco sus barcos? : "))
             columna = int(input("En que columna piensas que Jugador 1 coloco sus barcos? : "))
+            if (fila,columna) not in listaDeJugadasj2:
+                listaDeJugadasj2.append((fila,columna))
+                print(Turno(turno),"Has hecho estas jugadas",listaDeJugadasj2)
             HundirBarcosDelJugador1(tableroActualizadoJ1,fila,columna)
-            if ganador(tableroActualizadoJ2):
+            if ganador(tableroActualizadoJ1):
                 terminaJuego  = True
                 print("Felicidades! Ha ganado jugador 2")
             turno += 1

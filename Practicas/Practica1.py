@@ -1,11 +1,18 @@
 # Ejercicio 1: Imprimir los primeros 25 numeros pares    
-# for i in range (0,25,2):
-#     print (i)
+def f1(s):
+    if s <= 25:
+        print(s)
+        f1(s+1)
+f1(0)
 # #---------------------------------------------------
-
-# #Ejercicio 2: Escriba un programa que imprima los primeros 100 números naturales pares
-# for numero in range(0,100,2):
-#     print(numero)
+# #Ejercicio 2: Escriba un programa que imprima los primeros 100 números naturales pares)
+def f2(s = 0,m = 200):
+    if s < m:
+        if s % 2 == 0:
+            print (s)
+        else:return f2(s+1,m)
+    
+f2()
 # #EXTRA
 # #Imprime los primeros N pares
 # def ImprimeNPares(n):
@@ -27,29 +34,28 @@
 # # resultado de la suma de los primeros 50 números naturales 
 # # usando una función recursiva
 
-# def suma50numsnat(n):
-#     suma = 0
-#     if n == 0:
-#         return 0
-#     else:
-#         suma = n + (suma50numsnat (n - 1))
-#         return suma
+def suma50numsnat(n):
+    suma = 0
+    if n == 0:
+        return 0
+    else:
+        suma = n + (suma50numsnat (n - 1))
+        return suma
 
-# print(suma50numsnat(10))
+print(suma50numsnat(50))
         
 # #Ejercicio 6: imprima el resultado de la suma de los primeros numeros naturlaes
 # # mayores que n y menores que m 
-# def sumaDenumerosNyM(n,m):
-#     suma = 0
-#     sumando1 = n + 1
-#     if sumando1 == m:
-#         return 0
-#     else:
-#         if sumando1 < m:
-#             suma = sumando1 + (sumaDenumerosNyM(n+1,m))
-#             return suma
-    
-# print(sumaDenumerosNyM(0,10))
+def sumaDenumerosNyM(n,m):
+    suma = 0
+    if  n == m:
+        return 0
+    else:
+        if n < m:
+            suma = n + (sumaDenumerosNyM(n+1,m))
+            return suma
+
+print(sumaDenumerosNyM(-105,105))
 # # Ejercicio 7:Escriba un programa que reciba un nombre y
 # # retorne el nombre pasado concatenado 2 veces.
 # def concatenaNombres (nombre):

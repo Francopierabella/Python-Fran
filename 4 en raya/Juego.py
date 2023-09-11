@@ -468,36 +468,36 @@ def tableroLleno(tablero):
                 fichasR += 1
     return fichasR + fichasN == 56
 
-def juego ():
-    turno = 0
-    tableroActual = tablero()
-    fila = int(input("Fila: "))
-    columna = int(input("Columna: "))
-    Terminajuego = False
-    while not Terminajuego or not tableroLleno(tableroActual): 
-        if tableroLleno(tableroActual):
-            Terminajuego = True          
-        elif jugadaValida(tableroActual,fila,columna):
-            tableroActual = jugada(tableroActual,turno,fila,columna)
-            imprime_tablero(tableroActual)
-            turno += 1
-            if chequearGanador(tableroActual):
-                if tableroActual[fila][columna] == 'N':
-                    Terminajuego = True
-                    return "Gano Negro"
-                elif tableroActual[fila][columna] == 'R':
-                    Terminajuego = True
-                    return "Gano Rojo"      
-            fila = int(input("Fila: "))
-            columna = int(input("Columna: "))     
-        else:
-            print("jugada invalida, perdiste el turno")
-            turno += 1
-            fila = int(input("Fila: "))
-            columna = int(input("Columna: ")) 
-    print("El juego ha terminado")
+# def juego ():
+#     turno = 0
+#     tableroActual = tablero()
+#     fila = int(input("Fila: "))
+#     columna = int(input("Columna: "))
+#     Terminajuego = False
+#     while not Terminajuego or not tableroLleno(tableroActual): 
+#         if tableroLleno(tableroActual):
+#             Terminajuego = True          
+#         elif jugadaValida(tableroActual,fila,columna):
+#             tableroActual = jugada(tableroActual,turno,fila,columna)
+#             imprime_tablero(tableroActual)
+#             turno += 1
+#             if chequearGanador(tableroActual):
+#                 if tableroActual[fila][columna] == 'N':
+#                     Terminajuego = True
+#                     return "Gano Negro"
+#                 elif tableroActual[fila][columna] == 'R':
+#                     Terminajuego = True
+#                     return "Gano Rojo"      
+#             fila = int(input("Fila: "))
+#             columna = int(input("Columna: "))     
+#         else:
+#             print("jugada invalida, perdiste el turno")
+#             turno += 1
+#             fila = int(input("Fila: "))
+#             columna = int(input("Columna: ")) 
+#     print("El juego ha terminado")
             
-print(juego())
+# print(juego())
 
                 
                         
