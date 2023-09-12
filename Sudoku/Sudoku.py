@@ -91,9 +91,9 @@ def EstaEnFilaOColumna(tablero,fila,columna,numero):
 
 
 def jugada(tablero:list):
-    fila = int(input("Fila: "))
-    columna = int(input("Columna: "))
-    numero = str(input("Que numero quieres colocar en la posicion " + str((fila,columna))+ ':'))
+    fila = int(input("Fila (1-9): "))
+    columna = int(input("Columna (1-9): "))
+    numero = str(input("Que numero (1-9) quieres colocar en la posicion " + str((fila,columna))+ ':'))
     if PosicionValida(tablero,fila,columna,numero):
         tablero[fila][columna] = numero
     else:
