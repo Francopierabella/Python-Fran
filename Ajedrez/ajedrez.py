@@ -944,9 +944,9 @@ def juego():
         TurnoDeJugador = Turno(turno)
         print('Turno de color',TurnoDeJugador)
         pieza = str(input('Que pieza quieres mover (peon,alfil,caballo,reina,rey,torre): '))
-        posX =int(input('en que fila esta esa pieza ?'))
+        posX = int(input('en que fila esta esa pieza ?'))
         posY = int(input('en que columna esta esa pieza ?'))
-        if piezas(pieza,TurnoDeJugador)[1] == tablero[posX][posY][1]:
+        if piezas(pieza,TurnoDeJugador)[1] == tablero()[posX][posY][1]:
             PiezaAjugada(pieza,tableroActualizado)
             if Jaque(tableroActualizado,pieza,turno,posX,posY):
                 print('Jaque!')
